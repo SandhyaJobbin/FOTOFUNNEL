@@ -34,9 +34,12 @@
             --ta-shadow-hover: 0 14px 36px rgba(0, 0, 0, 0.12);
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -91,10 +94,23 @@
         }
 
         @keyframes float-up {
-            0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.4; }
-            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+            0% {
+                transform: translateY(110vh) scale(0.5);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
         }
 
         .container {
@@ -106,20 +122,61 @@
         }
 
         /* When the game is active, collapse the header to keep everything in view */
-        body.in-game .container { padding-top: 10px; }
-        body.in-game .header { margin-bottom: 10px; }
-        body.in-game .ta-owl { width: 38px; height: 38px; }
+        body.in-game .container {
+            padding-top: 10px;
+        }
+
+        body.in-game .header {
+            margin-bottom: 10px;
+        }
+
+        body.in-game .ta-owl {
+            width: 38px;
+            height: 38px;
+        }
+
         body.in-game .ta-owl::before,
-        body.in-game .ta-owl::after { width: 10px; height: 10px; top: 10px; }
-        body.in-game .ta-owl::before { left: 7px; }
-        body.in-game .ta-owl::after { right: 7px; }
+        body.in-game .ta-owl::after {
+            width: 10px;
+            height: 10px;
+            top: 10px;
+        }
+
+        body.in-game .ta-owl::before {
+            left: 7px;
+        }
+
+        body.in-game .ta-owl::after {
+            right: 7px;
+        }
+
         body.in-game .ta-owl-pupil-left,
-        body.in-game .ta-owl-pupil-right { width: 4px; height: 4px; top: 13px; }
-        body.in-game .ta-owl-pupil-left { left: 10px; }
-        body.in-game .ta-owl-pupil-right { right: 10px; }
-        body.in-game .game-title { font-size: 1.3rem; margin: 2px 0 0; }
-        body.in-game .subtitle { display: none; }
-        body.in-game .screen { padding: 16px; }
+        body.in-game .ta-owl-pupil-right {
+            width: 4px;
+            height: 4px;
+            top: 13px;
+        }
+
+        body.in-game .ta-owl-pupil-left {
+            left: 10px;
+        }
+
+        body.in-game .ta-owl-pupil-right {
+            right: 10px;
+        }
+
+        body.in-game .game-title {
+            font-size: 2rem;
+            margin: 2px 0 0;
+        }
+
+        body.in-game .subtitle {
+            display: none;
+        }
+
+        body.in-game .screen {
+            padding: 16px;
+        }
 
         /* ---------- HEADER ---------- */
         .header {
@@ -150,8 +207,15 @@
         }
 
         @keyframes owl-bob {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
         }
 
         .ta-owl::before,
@@ -164,8 +228,14 @@
             background: var(--ta-green);
             top: 14px;
         }
-        .ta-owl::before { left: 10px; }
-        .ta-owl::after { right: 10px; }
+
+        .ta-owl::before {
+            left: 10px;
+        }
+
+        .ta-owl::after {
+            right: 10px;
+        }
 
         .ta-owl-pupil-left,
         .ta-owl-pupil-right {
@@ -177,8 +247,14 @@
             top: 19px;
             z-index: 2;
         }
-        .ta-owl-pupil-left { left: 15px; }
-        .ta-owl-pupil-right { right: 15px; }
+
+        .ta-owl-pupil-left {
+            left: 15px;
+        }
+
+        .ta-owl-pupil-right {
+            right: 15px;
+        }
 
         .game-title {
             font-size: 2.2rem;
@@ -208,7 +284,9 @@
             box-shadow: var(--ta-shadow);
         }
 
-        .hidden { display: none !important; }
+        .hidden {
+            display: none !important;
+        }
 
         /* ---------- LOGIN SCREEN ---------- */
         .login-wrap {
@@ -267,7 +345,9 @@
             font-family: inherit;
         }
 
-        .tab:hover { color: var(--ta-black); }
+        .tab:hover {
+            color: var(--ta-black);
+        }
 
         .tab.active {
             background: #ffffff;
@@ -275,8 +355,13 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
         }
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
 
         .input-group {
             margin-bottom: 14px;
@@ -302,7 +387,9 @@
             font-family: inherit;
         }
 
-        .input-group input::placeholder { color: var(--ta-gray-soft); }
+        .input-group input::placeholder {
+            color: var(--ta-gray-soft);
+        }
 
         .input-group input:focus {
             outline: none;
@@ -404,15 +491,27 @@
         }
 
         /* ---------- GUIDELINES PANEL ---------- */
-        .how-to-play { line-height: 1.55; font-size: 0.9rem; color: var(--ta-ink); }
+        .how-to-play {
+            line-height: 1.55;
+            font-size: 0.9rem;
+            color: var(--ta-ink);
+        }
+
         .how-to-play h3 {
             color: var(--ta-black);
             margin: 16px 0 6px;
             font-size: 1rem;
             font-weight: 700;
         }
-        .how-to-play p { margin: 4px 0; color: var(--ta-gray); }
-        .how-to-play p strong { color: var(--ta-ink); }
+
+        .how-to-play p {
+            margin: 4px 0;
+            color: var(--ta-gray);
+        }
+
+        .how-to-play p strong {
+            color: var(--ta-ink);
+        }
 
         /* ---------- LEVEL SELECTION ---------- */
         .level-screen-header {
@@ -487,7 +586,9 @@
             border-color: var(--ta-green-dark);
         }
 
-        .level-card:hover::before { opacity: 1; }
+        .level-card:hover::before {
+            opacity: 1;
+        }
 
         .level-card.locked {
             opacity: 0.55;
@@ -581,8 +682,15 @@
         }
 
         @keyframes live-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
         }
 
         .score-display,
@@ -618,8 +726,13 @@
         }
 
         @keyframes timer-pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.04); }
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.04);
+            }
         }
 
         .progress-bar {
@@ -651,10 +764,11 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            align-items: center;
         }
 
         .q-image-row {
-            display: grid;
+            display: flex;
             grid-template-columns: 220px 1fr;
             gap: 14px;
             align-items: start;
@@ -670,7 +784,7 @@
         }
 
         .question-image {
-            width: 380px;
+            width: 375px;
             height: 250px;
             border: 1px solid var(--ta-border);
             border-radius: 10px;
@@ -704,7 +818,7 @@
             border-left: 3px solid var(--ta-green-dark);
             border-radius: 6px;
             padding: 10px 12px;
-            font-size: 0.88rem;
+            font-size: 0.99rem;
             color: var(--ta-ink);
             line-height: 1.45;
             margin: 0;
@@ -745,8 +859,15 @@
         }
 
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-6px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ---------- LIFELINES SIDEBAR ---------- */
@@ -782,7 +903,9 @@
             background: #ffffff;
         }
 
-        .lifeline:last-child { margin-bottom: 0; }
+        .lifeline:last-child {
+            margin-bottom: 0;
+        }
 
         .lifeline:hover:not(.used) {
             border-color: var(--ta-green-dark);
@@ -808,9 +931,23 @@
             flex-shrink: 0;
         }
 
-        .lifeline-info { flex: 1; min-width: 0; }
-        .lifeline-name { font-weight: 700; font-size: 0.76rem; color: var(--ta-black); }
-        .lifeline-desc { font-size: 0.66rem; color: var(--ta-gray); margin-top: 1px; }
+        .lifeline-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .lifeline-name {
+            font-weight: 700;
+            font-size: 0.76rem;
+            color: var(--ta-black);
+        }
+
+        .lifeline-desc {
+            font-size: 0.66rem;
+            color: var(--ta-gray);
+            margin-top: 1px;
+        }
+
         .lifeline-cost {
             color: var(--ta-coral);
             font-size: 0.68rem;
@@ -850,16 +987,18 @@
             margin: 0;
         }
 
-        #resultMessage.hidden { display: none; }
+        #resultMessage.hidden {
+            display: none;
+        }
 
         .correct {
-            background: rgba(52, 224, 161, 0.15);
+            background: #ffffff;
             border: 1.5px solid var(--ta-green-dark);
             color: #006e4a;
         }
 
         .incorrect {
-            background: rgb(199, 235, 250);
+            background: #ffffff;
             border: 1.5px solid var(--ta-coral);
             color: #b53f1f;
         }
@@ -907,6 +1046,7 @@
             margin: 6px 0;
             color: var(--ta-ink);
             font-size: 0.92rem;
+            padding: 4px;
         }
 
         .batman-quote {
@@ -973,12 +1113,39 @@
             pointer-events: none;
             z-index: 3;
         }
-        .cert-corner-tl { top: 18px; left: 18px; border-right: none; border-bottom: none; }
-        .cert-corner-tr { top: 18px; right: 18px; border-left: none; border-bottom: none; }
-        .cert-corner-bl { bottom: 18px; left: 18px; border-right: none; border-top: none; }
-        .cert-corner-br { bottom: 18px; right: 18px; border-left: none; border-top: none; }
 
-        .certificate-content { position: relative; z-index: 2; }
+        .cert-corner-tl {
+            top: 18px;
+            left: 18px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .cert-corner-tr {
+            top: 18px;
+            right: 18px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .cert-corner-bl {
+            bottom: 18px;
+            left: 18px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .cert-corner-br {
+            bottom: 18px;
+            right: 18px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .certificate-content {
+            position: relative;
+            z-index: 2;
+        }
 
         .cert-monogram {
             display: inline-block;
@@ -1031,6 +1198,7 @@
             gap: 12px;
             margin: 22px auto 18px;
         }
+
         .cert-divider::before,
         .cert-divider::after {
             content: '';
@@ -1039,6 +1207,7 @@
             height: 1px;
             background: var(--cert-gold);
         }
+
         .cert-divider span {
             display: block;
             width: 6px;
@@ -1075,6 +1244,7 @@
             margin: 10px 0 0;
             letter-spacing: 1px;
         }
+
         .cert-emp-id strong {
             color: var(--cert-navy);
             font-weight: 700;
@@ -1104,7 +1274,10 @@
             padding: 0 18px;
             border-right: 1px solid rgba(176, 141, 87, 0.4);
         }
-        .cert-stat:last-child { border-right: none; }
+
+        .cert-stat:last-child {
+            border-right: none;
+        }
 
         .cert-stat-label {
             font-size: 0.7rem;
@@ -1113,6 +1286,7 @@
             text-transform: uppercase;
             margin-bottom: 6px;
         }
+
         .cert-stat-value {
             font-size: 1.25rem;
             color: var(--cert-navy);
@@ -1124,12 +1298,14 @@
             margin-top: 30px;
             display: inline-block;
         }
+
         .cert-signature-line {
             width: 220px;
             height: 1px;
             background: var(--cert-navy);
             margin: 0 auto 6px;
         }
+
         .cert-signature-name {
             font-family: 'Georgia', serif;
             font-style: italic;
@@ -1137,6 +1313,7 @@
             color: var(--cert-navy);
             margin-bottom: 2px;
         }
+
         .cert-signature-title {
             font-size: 0.72rem;
             letter-spacing: 2px;
@@ -1169,9 +1346,20 @@
         }
 
         @keyframes particle-burst {
-            0% { transform: scale(0) translateY(0); opacity: 1; }
-            50% { transform: scale(1.2) translateY(-40px); opacity: 1; }
-            100% { transform: scale(0.4) translateY(-120px); opacity: 0; }
+            0% {
+                transform: scale(0) translateY(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.2) translateY(-40px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.4) translateY(-120px);
+                opacity: 0;
+            }
         }
 
         .success-glow {
@@ -1187,9 +1375,20 @@
         }
 
         @keyframes success-pulse {
-            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-            40% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+
+            40% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
         }
 
         .star-burst {
@@ -1202,59 +1401,171 @@
         }
 
         @keyframes star-pop {
-            0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
         }
 
         @keyframes confetti-fall {
-            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         /* ---------- RESPONSIVE ---------- */
         @media (max-width: 880px) {
-            .game-layout { grid-template-columns: 1fr; }
-            .lifelines-panel { position: static; }
-            .game-title { font-size: 1.7rem; }
-            .lifelines-panel { display: flex; gap: 8px; padding: 10px; }
-            .lifelines-panel h4 { display: none; }
-            .lifeline { flex: 1; margin-bottom: 0; padding: 6px 8px; }
-            .lifeline-desc { display: none; }
+            .game-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .lifelines-panel {
+                position: static;
+            }
+
+            .game-title {
+                font-size: 1.7rem;
+            }
+
+            .lifelines-panel {
+                display: flex;
+                gap: 8px;
+                padding: 10px;
+            }
+
+            .lifelines-panel h4 {
+                display: none;
+            }
+
+            .lifeline {
+                flex: 1;
+                margin-bottom: 0;
+                padding: 6px 8px;
+            }
+
+            .lifeline-desc {
+                display: none;
+            }
         }
 
         @media (max-width: 600px) {
-            .container { padding: 12px 12px; }
-            .screen { padding: 14px; }
+            .container {
+                padding: 12px 12px;
+            }
+
+            .screen {
+                padding: 14px;
+            }
+
             .game-hud {
                 grid-template-columns: 1fr auto;
                 gap: 6px;
             }
-            .game-hud .timer { grid-column: 2; grid-row: 1; }
-            .game-hud .score-display { grid-column: 1 / -1; grid-row: 2; justify-content: center; }
-            .game-hud .level-indicator { grid-column: 1; grid-row: 1; }
+
+            .game-hud .timer {
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            .game-hud .score-display {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                justify-content: center;
+            }
+
+            .game-hud .level-indicator {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
             .q-image-row {
                 grid-template-columns: 1fr;
                 gap: 8px;
             }
+
             .question-image {
                 width: 100%;
                 max-width: 280px;
                 height: 140px;
                 margin: 0 auto;
             }
-            .level-selection { grid-template-columns: 1fr; }
-            .btn-publish, .btn-remove, .btn-escalate { min-width: 96px; padding: 9px 12px; font-size: 0.8rem; }
-            .game-title { font-size: 1.4rem; }
-            .certificate { padding: 36px 22px 28px; }
-            .certificate h2 { font-size: 1.5rem; }
-            .certificate-field { min-width: auto; width: 100%; font-size: 1.4rem; padding: 4px 6px 8px; }
-            .cert-stats { flex-direction: column; gap: 14px; }
-            .cert-stat { border-right: none; border-bottom: 1px solid rgba(176, 141, 87, 0.4); padding: 0 0 10px; }
-            .cert-stat:last-child { border-bottom: none; padding-bottom: 0; }
-            .cert-body { font-size: 0.85rem; }
-            .cert-corner { width: 24px; height: 24px; }
-            #resultMessage { width: 94vw; padding: 16px 18px; }
+
+            .level-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-publish,
+            .btn-remove,
+            .btn-escalate {
+                min-width: 96px;
+                padding: 9px 12px;
+                font-size: 0.8rem;
+            }
+
+            .game-title {
+                font-size: 1.4rem;
+            }
+
+            .certificate {
+                padding: 36px 22px 28px;
+            }
+
+            .certificate h2 {
+                font-size: 1.5rem;
+            }
+
+            .certificate-field {
+                min-width: auto;
+                width: 100%;
+                font-size: 1.4rem;
+                padding: 4px 6px 8px;
+            }
+
+            .cert-stats {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .cert-stat {
+                border-right: none;
+                border-bottom: 1px solid rgba(176, 141, 87, 0.4);
+                padding: 0 0 10px;
+            }
+
+            .cert-stat:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .cert-body {
+                font-size: 0.85rem;
+            }
+
+            .cert-corner {
+                width: 24px;
+                height: 24px;
+            }
+
+            #resultMessage {
+                width: 94vw;
+                padding: 16px 18px;
+            }
         }
     </style>
 </head>
@@ -1295,7 +1606,8 @@
                     </div>
                     <div class="input-group">
                         <label for="username">Full Name</label>
-                        <input type="text" id="username" placeholder="Enter your full name" maxlength="60" autocomplete="off">
+                        <input type="text" id="username" placeholder="Enter your full name" maxlength="60"
+                            autocomplete="off">
                     </div>
                     <button class="btn btn-primary" onclick="showLevelSelection()">Launch the challenge →</button>
                 </div>
@@ -1303,7 +1615,8 @@
                 <div id="howtoTab" class="tab-content">
                     <div class="how-to-play">
                         <h3>🎯 Training Overview</h3>
-                        <p>Progress through 3 levels of content moderation training, each with increasing complexity and time pressure.</p>
+                        <p>Progress through 3 levels of content moderation training, each with increasing complexity and
+                            time pressure.</p>
                         <h3>📚 Level Structure</h3>
                         <p><strong>Level 1 — Foundation:</strong> Basic scenarios (45 seconds each)</p>
                         <p><strong>Level 2 — Intermediate:</strong> Complex cases (60 seconds each)</p>
@@ -1338,7 +1651,8 @@
                 <div class="level-card" onclick="startLevel(1)">
                     <div class="level-icon-wrap">🌱</div>
                     <div class="level-title">Level 1: Foundation</div>
-                    <div class="level-description">Learn basic content moderation principles with clear-cut scenarios.</div>
+                    <div class="level-description">Learn basic content moderation principles with clear-cut scenarios.
+                    </div>
                     <div class="level-stats">
                         <span>⏱ 45s / question</span>
                         <span>📊 10 questions</span>
@@ -1348,7 +1662,8 @@
                 <div class="level-card locked" id="level2Card">
                     <div class="level-icon-wrap">🔥</div>
                     <div class="level-title">Level 2: Intermediate</div>
-                    <div class="level-description">Handle complex scenarios requiring deeper analysis and judgment.</div>
+                    <div class="level-description">Handle complex scenarios requiring deeper analysis and judgment.
+                    </div>
                     <div class="level-stats">
                         <span>⏱ 60s / question</span>
                         <span>📊 10 questions</span>
@@ -1383,18 +1698,20 @@
             <div class="game-layout">
                 <div class="question-container">
                     <div class="question-number" id="questionNumber">Question 1 of 10</div>
-                        <div class="question-image" id="questionImage">[Content Image Placeholder]</div>
+                    <div class="question-image" id="questionImage">[Content Image Placeholder]</div>
 
-                    <div class="q-image-row"> 
+                    <div class="q-image-row">
                         <div class="q-text-col">
                             <div class="scenario" id="scenario">Loading scenario...</div>
                             <div class="quick-tip-container">
                                 <div class="quick-tip hidden" id="quickTip">Loading...</div>
                             </div>
-                                <button class="quick-tip-btn" id="quickTipBtn" onclick="toggleQuickTip()">💡 Need a hint?</button>
 
                         </div>
+
                     </div>
+                    <button class="quick-tip-btn" id="quickTipBtn" onclick="toggleQuickTip()">💡 Need a hint?</button>
+
 
                     <div class="button-group">
                         <button class="btn-publish" onclick="makeDecision('publish')">✓ Publish</button>
@@ -1456,8 +1773,8 @@
                     <div class="cert-corner cert-corner-br"></div>
 
                     <div class="certificate-content">
-                        <div class="cert-monogram">MV</div>
-                        <div class="cert-issuer">ModVerse Academy</div>
+                        <!-- <div class="cert-monogram">SGS</div> -->
+                        <div class="cert-issuer">Sutherland</div>
 
                         <h2 id="certificateTitle">Certificate of Completion</h2>
                         <h3>FotoFunnel · Content Moderation Training</h3>
@@ -1467,7 +1784,9 @@
                         <p class="cert-preamble">This is to certify that</p>
                         <div class="certificate-field" id="certName">Employee Name</div>
                         <p class="cert-emp-id">Employee ID &nbsp;·&nbsp; <strong id="certEmpId">—</strong></p>
-                        <p class="cert-body">has successfully completed all three levels of the FotoFunnel Content Moderation Training programme and has demonstrated proficiency in evaluating and moderating user-generated content in accordance with platform guidelines.</p>
+                        <p class="cert-body">has successfully completed all three levels of the FotoFunnel Content
+                            Moderation Training programme and has demonstrated proficiency in evaluating and moderating
+                            user-generated content in accordance with platform guidelines.</p>
 
                         <div class="cert-stats">
                             <div class="cert-stat">
@@ -1486,21 +1805,24 @@
 
                         <div class="cert-signature">
                             <div class="cert-signature-line"></div>
-                            <div class="cert-signature-name">ModVerse</div>
+                            <div class="cert-signature-name">Training Manager</div>
                             <div class="cert-signature-title">Training Evaluator</div>
                         </div>
 
-                        <div class="cert-footer">Verified by ModVerse Academy · Authentic certificate of completion</div>
+                        <!-- <div class="cert-footer">Verified by ModVerse Academy · Authentic certificate of completion</div> -->
                     </div>
                 </div>
                 <div style="text-align: center;">
-                    <button class="btn btn-primary" style="max-width: 320px; margin: 0 auto;" onclick="downloadCertificate()">Download Certificate (PDF)</button>
+                    <button class="btn btn-primary" style="max-width: 320px; margin: 0 auto;"
+                        onclick="downloadCertificate()">Download Certificate (PDF)</button>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 18px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <div
+                style="text-align: center; margin-top: 18px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                 <button class="btn btn-secondary" onclick="restartGame()">Retake Assessment</button>
-                <button class="btn btn-primary" style="max-width: 220px; width: auto;" onclick="showLevelSelection()" id="nextLevelBtn" style="display: none;">Next Level →</button>
+                <button class="btn btn-primary" style="max-width: 220px; width: auto;" onclick="showLevelSelection()"
+                    id="nextLevelBtn" style="display: none;">Next Level →</button>
             </div>
         </div>
 
@@ -1732,7 +2054,7 @@
         const level2Questions = [
             {
                 image: `<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
-                            <image href="https://content.api.news/v3/images/bin/eb721a8a3b2ade81e2d9318f8ead3a17" width="300" height="200" preserveAspectRatio="xMidYMid slice" />
+                            <image href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzhDTHC_T8DwFYkt9buStDNMtZiN3blDtLNA&s" width="300" height="200" preserveAspectRatio="xMidYMid slice" />
                         </svg>`,
                 scenario: "Political satire that may be offensive but doesn't clearly violate rules.",
                 tip: "Complex satirical content often needs expert evaluation.",
@@ -2603,166 +2925,250 @@
             document.getElementById('certDate').textContent = new Date().toLocaleDateString();
         }
 
-        // Download certificate as PDF
-        function downloadCertificate() {
-            // jsPDF UMD attaches at window.jspdf.jsPDF
-            const jsPDFCtor = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
-            if (typeof jsPDFCtor === 'undefined') {
-                showInlineMessage('PDF generation not available. Please try again.', 'error');
-                return;
-            }
+        // // Download certificate as PDF
+        // function downloadCertificate() {
+        //     // jsPDF UMD attaches at window.jspdf.jsPDF
+        //     const jsPDFCtor = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+        //     if (typeof jsPDFCtor === 'undefined') {
+        //         showInlineMessage('PDF generation not available. Please try again.', 'error');
+        //         return;
+        //     }
 
-            const doc = new jsPDFCtor('landscape', 'mm', 'a4');
+        //     const doc = new jsPDFCtor('landscape', 'mm', 'a4');
 
-            // Page dimensions
-            const pageW = 297;
-            const pageH = 210;
+        //     // Page dimensions
+        //     const pageW = 297;
+        //     const pageH = 210;
 
-            // Background (linen)
-            doc.setFillColor(250, 241, 237); // #FAF1ED
-            doc.rect(0, 0, pageW, pageH, 'F');
+        //     // Background (linen)
+        //     doc.setFillColor(250, 241, 237); // #FAF1ED
+        //     doc.rect(0, 0, pageW, pageH, 'F');
 
-            // Outer green border
-            doc.setDrawColor(52, 224, 161); // TripGreen
-            doc.setLineWidth(3);
-            doc.rect(8, 8, pageW - 16, pageH - 16);
+        //     // Outer green border
+        //     doc.setDrawColor(52, 224, 161); // TripGreen
+        //     doc.setLineWidth(3);
+        //     doc.rect(8, 8, pageW - 16, pageH - 16);
 
-            // Inner thin border
-            doc.setDrawColor(0, 168, 112); // darker green
-            doc.setLineWidth(0.4);
-            doc.rect(13, 13, pageW - 26, pageH - 26);
+        //     // Inner thin border
+        //     doc.setDrawColor(0, 168, 112); // darker green
+        //     doc.setLineWidth(0.4);
+        //     doc.rect(13, 13, pageW - 26, pageH - 26);
 
-            // Top accent bar
-            doc.setFillColor(52, 224, 161);
-            doc.rect(13, 13, pageW - 26, 4, 'F');
+        //     // Top accent bar
+        //     doc.setFillColor(52, 224, 161);
+        //     doc.rect(13, 13, pageW - 26, 4, 'F');
 
-            // Award marker (drawn as a filled circle with star-like text)
-            doc.setFillColor(52, 224, 161);
-            doc.circle(pageW / 2, 32, 6, 'F');
-            doc.setTextColor(0, 0, 0);
-            doc.setFontSize(12);
-            doc.setFont('helvetica', 'bold');
-            doc.text('*', pageW / 2, 35, { align: 'center' });
+        //     // Award marker (drawn as a filled circle with star-like text)
+        //     doc.setFillColor(52, 224, 161);
+        //     doc.circle(pageW / 2, 32, 6, 'F');
+        //     doc.setTextColor(0, 0, 0);
+        //     doc.setFontSize(12);
+        //     doc.setFont('helvetica', 'bold');
+        //     doc.text('*', pageW / 2, 35, { align: 'center' });
 
-            // Certificate title
-            doc.setFontSize(28);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(0, 0, 0);
-            const certificateTitle = window.elementSdk?.config?.certificate_title || defaultConfig.certificate_title;
-            doc.text(certificateTitle, pageW / 2, 50, { align: 'center' });
+        //     // Certificate title
+        //     doc.setFontSize(28);
+        //     doc.setFont('helvetica', 'bold');
+        //     doc.setTextColor(0, 0, 0);
+        //     const certificateTitle = window.elementSdk?.config?.certificate_title || defaultConfig.certificate_title;
+        //     doc.text(certificateTitle, pageW / 2, 50, { align: 'center' });
 
-            // Subtitle
-            doc.setFontSize(14);
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(0, 168, 112);
-            doc.text('FotoFunnel Content Moderation Training', pageW / 2, 60, { align: 'center' });
+        //     // Subtitle
+        //     doc.setFontSize(14);
+        //     doc.setFont('helvetica', 'normal');
+        //     doc.setTextColor(0, 168, 112);
+        //     doc.text('FotoFunnel Content Moderation Training', pageW / 2, 60, { align: 'center' });
 
-            // Decorative line
-            doc.setDrawColor(52, 224, 161);
-            doc.setLineWidth(0.6);
-            doc.line(80, 66, pageW - 80, 66);
+        //     // Decorative line
+        //     doc.setDrawColor(52, 224, 161);
+        //     doc.setLineWidth(0.6);
+        //     doc.line(80, 66, pageW - 80, 66);
 
-            // "Presented to"
-            doc.setFontSize(12);
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(90, 90, 90);
-            doc.text('This certificate is proudly presented to', pageW / 2, 70, { align: 'center' });
+        //     // "Presented to"
+        //     doc.setFontSize(12);
+        //     doc.setFont('helvetica', 'normal');
+        //     doc.setTextColor(90, 90, 90);
+        //     doc.text('This certificate is proudly presented to', pageW / 2, 70, { align: 'center' });
 
-            // Name
-            doc.setFontSize(26);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(0, 0, 0);
-            doc.text(currentUser, pageW / 2, 88, { align: 'center' });
+        //     // Name
+        //     doc.setFontSize(26);
+        //     doc.setFont('helvetica', 'bold');
+        //     doc.setTextColor(0, 0, 0);
+        //     doc.text(currentUser, pageW / 2, 88, { align: 'center' });
 
-            // Underline for name
-            doc.setDrawColor(0, 168, 112);
-            doc.setLineWidth(0.8);
-            doc.line(70, 92, pageW - 70, 92);
+        //     // Underline for name
+        //     doc.setDrawColor(0, 168, 112);
+        //     doc.setLineWidth(0.8);
+        //     doc.line(70, 92, pageW - 70, 92);
 
-            // Employee ID
-            doc.setFontSize(12);
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(90, 90, 90);
-            doc.text('Employee ID:', pageW / 2 - 18, 102, { align: 'right' });
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(0, 0, 0);
-            doc.text(currentEmpId, pageW / 2 - 15, 102, { align: 'left' });
+        //     // Employee ID
+        //     doc.setFontSize(12);
+        //     doc.setFont('helvetica', 'normal');
+        //     doc.setTextColor(90, 90, 90);
+        //     doc.text('Employee ID:', pageW / 2 - 18, 102, { align: 'right' });
+        //     doc.setFont('helvetica', 'bold');
+        //     doc.setTextColor(0, 0, 0);
+        //     doc.text(currentEmpId, pageW / 2 - 15, 102, { align: 'left' });
 
-            // Body text
-            doc.setFontSize(12);
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(90, 90, 90);
-            doc.text('for successfully completing the content moderation training', pageW / 2, 115, { align: 'center' });
+        //     // Body text
+        //     doc.setFontSize(12);
+        //     doc.setFont('helvetica', 'normal');
+        //     doc.setTextColor(90, 90, 90);
+        //     doc.text('for successfully completing the content moderation training', pageW / 2, 115, { align: 'center' });
 
-            // Stats row
-            const percentage = Math.round((score / (currentQuestions.length * 10)) * 100);
-            const timeTaken = document.getElementById('certTime').textContent;
-            const date = new Date().toLocaleDateString();
+        //     // Stats row
+        //     const percentage = Math.round((score / (currentQuestions.length * 10)) * 100);
+        //     const timeTaken = document.getElementById('certTime').textContent;
+        //     const date = new Date().toLocaleDateString();
 
-            // Three stat boxes
-            const statY = 130;
-            const statBoxW = 70;
-            const statH = 22;
-            const gapX = 6;
-            const totalW = statBoxW * 3 + gapX * 2;
-            const startX = (pageW - totalW) / 2;
+        //     // Three stat boxes
+        //     const statY = 130;
+        //     const statBoxW = 70;
+        //     const statH = 22;
+        //     const gapX = 6;
+        //     const totalW = statBoxW * 3 + gapX * 2;
+        //     const startX = (pageW - totalW) / 2;
 
-            const drawStat = (x, label, value) => {
-                doc.setFillColor(255, 255, 255);
-                doc.setDrawColor(229, 224, 220);
-                doc.setLineWidth(0.3);
-                doc.roundedRect(x, statY, statBoxW, statH, 2, 2, 'FD');
-                doc.setFontSize(9);
-                doc.setFont('helvetica', 'normal');
-                doc.setTextColor(90, 90, 90);
-                doc.text(label, x + statBoxW / 2, statY + 8, { align: 'center' });
-                doc.setFontSize(13);
-                doc.setFont('helvetica', 'bold');
-                doc.setTextColor(0, 168, 112);
-                doc.text(value, x + statBoxW / 2, statY + 17, { align: 'center' });
-            };
+        //     const drawStat = (x, label, value) => {
+        //         doc.setFillColor(255, 255, 255);
+        //         doc.setDrawColor(229, 224, 220);
+        //         doc.setLineWidth(0.3);
+        //         doc.roundedRect(x, statY, statBoxW, statH, 2, 2, 'FD');
+        //         doc.setFontSize(9);
+        //         doc.setFont('helvetica', 'normal');
+        //         doc.setTextColor(90, 90, 90);
+        //         doc.text(label, x + statBoxW / 2, statY + 8, { align: 'center' });
+        //         doc.setFontSize(13);
+        //         doc.setFont('helvetica', 'bold');
+        //         doc.setTextColor(0, 168, 112);
+        //         doc.text(value, x + statBoxW / 2, statY + 17, { align: 'center' });
+        //     };
 
-            drawStat(startX, 'SCORE', `${percentage}%`);
-            drawStat(startX + statBoxW + gapX, 'TIME TAKEN', timeTaken);
-            drawStat(startX + (statBoxW + gapX) * 2, 'EVALUATOR', 'ModVerse');
+        //     drawStat(startX, 'SCORE', `${percentage}%`);
+        //     drawStat(startX + statBoxW + gapX, 'TIME TAKEN', timeTaken);
+        //     drawStat(startX + (statBoxW + gapX) * 2, 'EVALUATOR', 'ModVerse');
 
-            // Quote
-            doc.setFont('helvetica', 'italic');
-            doc.setFontSize(11);
-            doc.setTextColor(90, 90, 90);
-            doc.text('"Awesome, now you are ready to moderate the content."', pageW / 2, 165, { align: 'center' });
+        //     // Quote
+        //     doc.setFont('helvetica', 'italic');
+        //     doc.setFontSize(11);
+        //     doc.setTextColor(90, 90, 90);
+        //     doc.text('"Awesome, now you are ready to moderate the content."', pageW / 2, 165, { align: 'center' });
 
-            // Signature - bottom right
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(16);
-            doc.setTextColor(0, 168, 112);
-            doc.text('ModVerse', pageW - 30, 182, { align: 'right' });
+        //     // Signature - bottom right
+        //     doc.setFont('helvetica', 'bold');
+        //     doc.setFontSize(16);
+        //     doc.setTextColor(0, 168, 112);
+        //     doc.text('ModVerse', pageW - 30, 182, { align: 'right' });
 
-            doc.setFont('helvetica', 'normal');
-            doc.setFontSize(9);
-            doc.setTextColor(90, 90, 90);
-            doc.text('Training Evaluator', pageW - 30, 187, { align: 'right' });
-            doc.text(`Date: ${date}`, pageW - 30, 192, { align: 'right' });
+        //     doc.setFont('helvetica', 'normal');
+        //     doc.setFontSize(9);
+        //     doc.setTextColor(90, 90, 90);
+        //     doc.text('Training Evaluator', pageW - 30, 187, { align: 'right' });
+        //     doc.text(`Date: ${date}`, pageW - 30, 192, { align: 'right' });
 
-            // Bottom left - certified badge
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(10);
-            doc.setTextColor(0, 0, 0);
-            doc.text('ModVerse Academy Certified', 30, 187);
-            doc.setFont('helvetica', 'normal');
-            doc.setFontSize(8);
-            doc.setTextColor(90, 90, 90);
-            doc.text('Verified content moderation graduate', 30, 192);
+        //     // Bottom left - certified badge
+        //     doc.setFont('helvetica', 'bold');
+        //     doc.setFontSize(10);
+        //     doc.setTextColor(0, 0, 0);
+        //     doc.text('ModVerse Academy Certified', 30, 187);
+        //     doc.setFont('helvetica', 'normal');
+        //     doc.setFontSize(8);
+        //     doc.setTextColor(90, 90, 90);
+        //     doc.text('Verified content moderation graduate', 30, 192);
 
-            // Bottom accent bar
-            doc.setFillColor(52, 224, 161);
-            doc.rect(13, pageH - 17, pageW - 26, 4, 'F');
+        //     // Bottom accent bar
+        //     doc.setFillColor(52, 224, 161);
+        //     doc.rect(13, pageH - 17, pageW - 26, 4, 'F');
 
-            // Save
-            const safeName = currentUser.replace(/[^a-zA-Z0-9_-]/g, '_');
-            const safeId = currentEmpId.replace(/[^a-zA-Z0-9_-]/g, '_');
-            doc.save(`${safeName}_${safeId}_FotoFunnel_Certificate.pdf`);
-        }
+        //     // Save
+        //     const safeName = currentUser.replace(/[^a-zA-Z0-9_-]/g, '_');
+        //     const safeId = currentEmpId.replace(/[^a-zA-Z0-9_-]/g, '_');
+        //     doc.save(`${safeName}_${safeId}_FotoFunnel_Certificate.pdf`);
+        // }
+
+       function downloadCertificate() {
+    const jsPDFCtor = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+    if (typeof jsPDFCtor === 'undefined') {
+        showInlineMessage('PDF generation not available. Please try again.', 'error');
+        return;
+    }
+
+    const doc = new jsPDFCtor('landscape', 'mm', 'a4');
+
+    const pageW = 297;
+    const pageH = 210;
+
+    doc.setFillColor(255, 255, 255);
+    doc.rect(0, 0, pageW, pageH, 'F');
+
+    doc.setDrawColor(120, 120, 120);
+    doc.setLineWidth(1);
+    doc.rect(12, 12, pageW - 24, pageH - 24);
+
+    doc.setFontSize(28);
+    doc.setFont('times', 'normal');
+    doc.setTextColor(0, 0, 0);
+    const certificateTitle = window.elementSdk?.config?.certificate_title || defaultConfig.certificate_title;
+    doc.text(certificateTitle, pageW / 2, 45, { align: 'center' });
+
+    doc.setFontSize(16);
+    doc.setFont('times', 'italic');
+    doc.text('FotoFunnel Content Moderation Training', pageW / 2, 60, { align: 'center' });
+
+    doc.setDrawColor(120, 120, 120);
+    doc.setLineWidth(0.5);
+    doc.line(60, 70, pageW - 60, 70);
+
+    doc.setFontSize(14);
+    doc.setFont('times', 'normal');
+    doc.text('This is to certify that', pageW / 2, 90, { align: 'center' });
+
+    doc.setFontSize(24);
+    doc.setFont('times', 'bold');
+    doc.text(currentUser, pageW / 2, 105, { align: 'center' });
+
+    doc.setDrawColor(120, 120, 120);
+    doc.setLineWidth(0.5);
+    const nameWidth = doc.getTextWidth(currentUser) * 0.6;
+    doc.line((pageW - nameWidth) / 2, 108, (pageW + nameWidth) / 2, 108);
+
+    doc.setFontSize(12);
+    doc.setFont('times', 'normal');
+    doc.text(`Employee ID: ${currentEmpId}`, pageW / 2, 118, { align: 'center' });
+
+    doc.setFontSize(14);
+    doc.setFont('times', 'italic');
+    doc.text('has successfully completed the FotoFunnel Content Moderation Training', pageW / 2, 132, { align: 'center' });
+    doc.text('and demonstrated proficiency in evaluating user-generated content.', pageW / 2, 142, { align: 'center' });
+
+    const percentage = Math.round((score / (currentQuestions.length * 10)) * 100);
+    const timeTaken = document.getElementById('certTime').textContent;
+    const date = new Date().toLocaleDateString();
+
+    doc.setFontSize(12);
+    doc.setFont('times', 'normal');
+
+    doc.text(`Final Score: ${percentage}%`, 80, 160);
+    doc.text(`Time Taken: ${timeTaken}`, pageW / 2, 160, { align: 'center' });
+    doc.text(`Date Issued: ${date}`, pageW - 80, 160, null, null, 'right');
+
+    doc.setFontSize(12);
+    doc.setFont('times', 'italic');
+    doc.text('"Professionalism and integrity in content moderation."', pageW / 2, 175, { align: 'center' });
+
+    doc.setFontSize(14);
+    doc.setFont('times', 'normal');
+    // doc.text('ModVerse Academy', pageW - 40, 190, null, null, 'right');
+    doc.text('Training Evaluator', pageW - 40, 200, null, null, 'right');
+
+    doc.setFontSize(10);
+    doc.setFont('times', 'italic');
+    doc.text('Certified by Sutherland T&S', 40, 195);
+
+    const safeName = currentUser.replace(/[^a-zA-Z0-9_-]/g, '_');
+    const safeId = currentEmpId.replace(/[^a-zA-Z0-9_-]/g, '_');
+    doc.save(`${safeName}_${safeId}_FotoFunnel_Certification.pdf`);
+}
 
         // Restart game
         function restartGame() {
@@ -2833,4 +3239,5 @@
         });
     </script>
 </body>
+
 </html>
