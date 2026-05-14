@@ -288,6 +288,39 @@
             display: none !important;
         }
 
+
+        .remove-reason-dropdown {
+            margin-top: 10px;
+        }
+
+        .remove-reason-dropdown select {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 240px;
+            margin-bottom: 10px;
+        }
+
+        .remove-reason-dropdown select:hover {
+            border-color: #ff0000;
+        }
+
+        .remove-reason-dropdown .btn-submit-reason {
+            background-color: #ff0000;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .remove-reason-dropdown .btn-submit-reason:hover {
+            background-color: #cc0000;
+        }
+
         /* ---------- LOGIN SCREEN ---------- */
         .login-wrap {
             max-width: 460px;
@@ -1713,10 +1746,33 @@
                     <button class="quick-tip-btn" id="quickTipBtn" onclick="toggleQuickTip()">💡 Need a hint?</button>
 
 
-                    <div class="button-group">
+                    <!-- <div class="button-group">
                         <button class="btn-publish" onclick="makeDecision('publish')">✓ Publish</button>
                         <button class="btn-remove" onclick="makeDecision('remove')">✕ Remove</button>
                         <button class="btn-escalate" onclick="makeDecision('escalate')">⚠ Escalate</button>
+                    </div> -->
+
+                    <div class="button-group">
+                        <button class="btn-publish" onclick="makeDecision('publish')">✓ Publish</button>
+                        <button class="btn-remove" onclick="showRemoveReasonDropdown()">✕ Remove</button>
+                        <button class="btn-escalate" onclick="makeDecision('escalate')">⚠ Escalate</button>
+                    </div>
+
+                    <div id="removeReasonDropdown" class="remove-reason-dropdown hidden">
+                        <select id="removeReasonSelect" onchange="handleRemoveReason(this.value)">
+                            <option value="">Select a reason</option>
+                            <option value="Photo Quality">Photo Quality</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Duplicate">Duplicate</option>
+                            <option value="Illegal Activity">Illegal Activity</option>
+                            <option value="Irrelevant">Irrelevant</option>
+                            <option value="Non-Original">Non-Original</option>
+                            <option value="Privacy">Privacy</option>
+                            <option value="Graphic">Graphic</option>
+                            <option value="Sexually Explicit">Sexually Explicit</option>
+                            <option value="Caption">Caption</option>
+                        </select>
+                        <!-- <button class="btn-submit-reason" onclick="makeDecision('remove')">Submit</button> -->
                     </div>
                 </div>
 
@@ -2491,6 +2547,18 @@
             }
         }
 
+        function handleRemoveReason(reason) {
+            // Prevent execution if the user selects the default placeholder
+            if (!reason) return;
+
+            // Pass 'remove' as the action type, and the specific reason to your existing function
+            makeDecision('remove', reason);
+
+            // Optional: Reset the dropdown value back to default for the next question
+            document.getElementById('removeReasonSelect').value = "";
+        }
+
+
         // Initialize floating dots animation
         function initDataStreams() {
             const container = document.getElementById('dataStreams');
@@ -2736,6 +2804,30 @@
         }
 
         // Make decision
+        // function makeDecision(choice) {
+        //     if (isAnswered) return;
+        //     isAnswered = true;
+        //     clearInterval(timerInterval);
+
+        //     const question = currentQuestions[currentQuestion];
+        //     const isCorrect = choice === question.correct;
+
+        //     if (isCorrect) {
+        //         score += 10;
+        //         showResult(true, '✓ Excellent! Correct decision.', question.correctExplanation);
+        //         showCelebration();
+        //     } else {
+        //         const wrongExplanation = question.wrongExplanations[choice];
+        //         showResult(false, `✕ Incorrect. The right answer was "${question.correct.toUpperCase()}".`, wrongExplanation);
+        //     }
+
+        //     document.getElementById('scoreDisplay').textContent = `Score: ${score}`;
+        //     // User dismisses the modal via the Continue button — no auto-advance.
+        // }
+        function showRemoveReasonDropdown() {
+            document.getElementById('removeReasonDropdown').classList.remove('hidden');
+        }
+
         function makeDecision(choice) {
             if (isAnswered) return;
             isAnswered = true;
@@ -2744,17 +2836,33 @@
             const question = currentQuestions[currentQuestion];
             const isCorrect = choice === question.correct;
 
+            let message = '';
+            let explanation = '';
+
+            if (choice === 'remove') {
+                const removeReason = document.getElementById('removeReasonSelect').value;
+                if (removeReason === '') {
+                    showInlineMessage('Please select a reason for removal.', 'error');
+                    isAnswered = false;
+                    return;
+                }
+                message = `✕ Content removed for reason: ${removeReason}.`;
+                explanation = isCorrect ? question.correctExplanation : question.wrongExplanations[choice];
+            } else {
+                message = isCorrect ? '✓ Excellent! Correct decision.' : `✕ Incorrect. The right answer was "${question.correct.toUpperCase()}".`;
+                explanation = isCorrect ? question.correctExplanation : question.wrongExplanations[choice];
+            }
+
             if (isCorrect) {
                 score += 10;
-                showResult(true, '✓ Excellent! Correct decision.', question.correctExplanation);
+                showResult(true, message, explanation);
                 showCelebration();
             } else {
-                const wrongExplanation = question.wrongExplanations[choice];
-                showResult(false, `✕ Incorrect. The right answer was "${question.correct.toUpperCase()}".`, wrongExplanation);
+                showResult(false, message, explanation);
             }
 
             document.getElementById('scoreDisplay').textContent = `Score: ${score}`;
-            // User dismisses the modal via the Continue button — no auto-advance.
+            document.getElementById('removeReasonDropdown').classList.add('hidden');
         }
 
         // Show result (rendered as a centered modal overlay)
@@ -3086,89 +3194,89 @@
         //     doc.save(`${safeName}_${safeId}_FotoFunnel_Certificate.pdf`);
         // }
 
-       function downloadCertificate() {
-    const jsPDFCtor = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
-    if (typeof jsPDFCtor === 'undefined') {
-        showInlineMessage('PDF generation not available. Please try again.', 'error');
-        return;
-    }
+        function downloadCertificate() {
+            const jsPDFCtor = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+            if (typeof jsPDFCtor === 'undefined') {
+                showInlineMessage('PDF generation not available. Please try again.', 'error');
+                return;
+            }
 
-    const doc = new jsPDFCtor('landscape', 'mm', 'a4');
+            const doc = new jsPDFCtor('landscape', 'mm', 'a4');
 
-    const pageW = 297;
-    const pageH = 210;
+            const pageW = 297;
+            const pageH = 210;
 
-    doc.setFillColor(255, 255, 255);
-    doc.rect(0, 0, pageW, pageH, 'F');
+            doc.setFillColor(255, 255, 255);
+            doc.rect(0, 0, pageW, pageH, 'F');
 
-    doc.setDrawColor(120, 120, 120);
-    doc.setLineWidth(1);
-    doc.rect(12, 12, pageW - 24, pageH - 24);
+            doc.setDrawColor(120, 120, 120);
+            doc.setLineWidth(1);
+            doc.rect(12, 12, pageW - 24, pageH - 24);
 
-    doc.setFontSize(28);
-    doc.setFont('times', 'normal');
-    doc.setTextColor(0, 0, 0);
-    const certificateTitle = window.elementSdk?.config?.certificate_title || defaultConfig.certificate_title;
-    doc.text(certificateTitle, pageW / 2, 45, { align: 'center' });
+            doc.setFontSize(28);
+            doc.setFont('times', 'normal');
+            doc.setTextColor(0, 0, 0);
+            const certificateTitle = window.elementSdk?.config?.certificate_title || defaultConfig.certificate_title;
+            doc.text(certificateTitle, pageW / 2, 45, { align: 'center' });
 
-    doc.setFontSize(16);
-    doc.setFont('times', 'italic');
-    doc.text('FotoFunnel Content Moderation Training', pageW / 2, 60, { align: 'center' });
+            doc.setFontSize(16);
+            doc.setFont('times', 'italic');
+            doc.text('FotoFunnel Content Moderation Training', pageW / 2, 60, { align: 'center' });
 
-    doc.setDrawColor(120, 120, 120);
-    doc.setLineWidth(0.5);
-    doc.line(60, 70, pageW - 60, 70);
+            doc.setDrawColor(120, 120, 120);
+            doc.setLineWidth(0.5);
+            doc.line(60, 70, pageW - 60, 70);
 
-    doc.setFontSize(14);
-    doc.setFont('times', 'normal');
-    doc.text('This is to certify that', pageW / 2, 90, { align: 'center' });
+            doc.setFontSize(14);
+            doc.setFont('times', 'normal');
+            doc.text('This is to certify that', pageW / 2, 90, { align: 'center' });
 
-    doc.setFontSize(24);
-    doc.setFont('times', 'bold');
-    doc.text(currentUser, pageW / 2, 105, { align: 'center' });
+            doc.setFontSize(24);
+            doc.setFont('times', 'bold');
+            doc.text(currentUser, pageW / 2, 105, { align: 'center' });
 
-    doc.setDrawColor(120, 120, 120);
-    doc.setLineWidth(0.5);
-    const nameWidth = doc.getTextWidth(currentUser) * 0.6;
-    doc.line((pageW - nameWidth) / 2, 108, (pageW + nameWidth) / 2, 108);
+            doc.setDrawColor(120, 120, 120);
+            doc.setLineWidth(0.5);
+            const nameWidth = doc.getTextWidth(currentUser) * 0.6;
+            doc.line((pageW - nameWidth) / 2, 108, (pageW + nameWidth) / 2, 108);
 
-    doc.setFontSize(12);
-    doc.setFont('times', 'normal');
-    doc.text(`Employee ID: ${currentEmpId}`, pageW / 2, 118, { align: 'center' });
+            doc.setFontSize(12);
+            doc.setFont('times', 'normal');
+            doc.text(`Employee ID: ${currentEmpId}`, pageW / 2, 118, { align: 'center' });
 
-    doc.setFontSize(14);
-    doc.setFont('times', 'italic');
-    doc.text('has successfully completed the FotoFunnel Content Moderation Training', pageW / 2, 132, { align: 'center' });
-    doc.text('and demonstrated proficiency in evaluating user-generated content.', pageW / 2, 142, { align: 'center' });
+            doc.setFontSize(14);
+            doc.setFont('times', 'italic');
+            doc.text('has successfully completed the FotoFunnel Content Moderation Training', pageW / 2, 132, { align: 'center' });
+            doc.text('and demonstrated proficiency in evaluating user-generated content.', pageW / 2, 142, { align: 'center' });
 
-    const percentage = Math.round((score / (currentQuestions.length * 10)) * 100);
-    const timeTaken = document.getElementById('certTime').textContent;
-    const date = new Date().toLocaleDateString();
+            const percentage = Math.round((score / (currentQuestions.length * 10)) * 100);
+            const timeTaken = document.getElementById('certTime').textContent;
+            const date = new Date().toLocaleDateString();
 
-    doc.setFontSize(12);
-    doc.setFont('times', 'normal');
+            doc.setFontSize(12);
+            doc.setFont('times', 'normal');
 
-    doc.text(`Final Score: ${percentage}%`, 80, 160);
-    doc.text(`Time Taken: ${timeTaken}`, pageW / 2, 160, { align: 'center' });
-    doc.text(`Date Issued: ${date}`, pageW - 80, 160, null, null, 'right');
+            doc.text(`Final Score: ${percentage}%`, 80, 160);
+            doc.text(`Time Taken: ${timeTaken}`, pageW / 2, 160, { align: 'center' });
+            doc.text(`Date Issued: ${date}`, pageW - 80, 160, null, null, 'right');
 
-    doc.setFontSize(12);
-    doc.setFont('times', 'italic');
-    doc.text('"Professionalism and integrity in content moderation."', pageW / 2, 175, { align: 'center' });
+            doc.setFontSize(12);
+            doc.setFont('times', 'italic');
+            doc.text('"Professionalism and integrity in content moderation."', pageW / 2, 175, { align: 'center' });
 
-    doc.setFontSize(14);
-    doc.setFont('times', 'normal');
-    // doc.text('ModVerse Academy', pageW - 40, 190, null, null, 'right');
-    doc.text('Training Evaluator', pageW - 40, 200, null, null, 'right');
+            doc.setFontSize(14);
+            doc.setFont('times', 'normal');
+            // doc.text('ModVerse Academy', pageW - 40, 190, null, null, 'right');
+            doc.text('Training Evaluator', pageW - 40, 200, null, null, 'right');
 
-    doc.setFontSize(10);
-    doc.setFont('times', 'italic');
-    doc.text('Certified by Sutherland T&S', 40, 195);
+            doc.setFontSize(10);
+            doc.setFont('times', 'italic');
+            doc.text('Certified by Sutherland T&S', 40, 195);
 
-    const safeName = currentUser.replace(/[^a-zA-Z0-9_-]/g, '_');
-    const safeId = currentEmpId.replace(/[^a-zA-Z0-9_-]/g, '_');
-    doc.save(`${safeName}_${safeId}_FotoFunnel_Certification.pdf`);
-}
+            const safeName = currentUser.replace(/[^a-zA-Z0-9_-]/g, '_');
+            const safeId = currentEmpId.replace(/[^a-zA-Z0-9_-]/g, '_');
+            doc.save(`${safeName}_${safeId}_FotoFunnel_Certification.pdf`);
+        }
 
         // Restart game
         function restartGame() {
